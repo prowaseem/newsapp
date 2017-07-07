@@ -53,6 +53,12 @@ html,body{
 ul.news .news-item img{
     width: 100%;
 }
+footer button{
+    font-size: 80% !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
 .image-col{
     margin: 0;
     padding: 0;
