@@ -1,13 +1,25 @@
 import React from 'react';
 import News from './News';
 import moment from 'moment';
+import {CreateActions} from '../actions/action.js';
+import {connect} from 'react-redux';
+import reducer from '../reducers'
+import {GET_DATA} from '../constants/ActionTypes';
+import { bindActionCreators } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import configureStore from '../store/configureStore.js';
+import Widget from './Widget';
+const store = configureStore;
 
 class Widget extends React.Component{
     constructor(props){
         super(props);
+        this.source = this.props.source;
+        this.sort = this.props.sort;
         this.state = {
-            title: this.props.title || 'Untitled',
-            today: moment(new Date()).format('ll')
+            title: this.source || 'Untitled',
+            articles: {}
         };
     }
     render(){
@@ -30,4 +42,14 @@ class Widget extends React.Component{
     }
 }
 
-export default Widget;
+function mapStateToProps(state){
+  console.log("mapStateToProps", state);
+  return {
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({CreateActions}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Widget);

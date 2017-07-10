@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import _ from 'lodash'
 import {CreateActions} from '../actions/action.js';
 import {connect} from 'react-redux';
@@ -10,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import configureStore from '../store/configureStore.js';
+import Widget from './Widget';
 const store = configureStore;
 
 // function getNewsFeed(sourceAtt="metro", sortAtt="top") {
@@ -36,17 +35,12 @@ class App extends Component {
   render() {
     //var a = JSON.parse({this.props.state});
         return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div className="MyNewsData">
-        </div>
-      </div>
+       <div className="container" id="main">
+                <div className="row">
+                    <Widget title="bbc-news", sort="Top"/>
+                    <Widget title="bbc-news", sort="Top"/>
+                </div>
+            </div>
     );
   }
 }
